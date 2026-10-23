@@ -89,8 +89,9 @@ Ripeness stage: an AI estimate from Gemini Vision, or the grower picks it. "An e
 
 Shelf-life hours, advisor costs, subsidies: these come from post-harvest handbooks and typical MIDH/NHB patterns. "Starting values. We tune them in the pilot."
 
-Fake/Sample
-Storage on the map: these are 10 demo facilities. Real owners can register their own, with their own UPI/QR payments.  "Demo data, labelled in the app."
+
+Storage on the map: these are real facilities available in. Real owners can register their own, with their own UPI/QR payments.
+
 
 Payments: there is no payment gateway yet, and the UTRs (bank transaction reference numbers) are random test numbers.  "Simulated. A licensed partner comes next."
 
