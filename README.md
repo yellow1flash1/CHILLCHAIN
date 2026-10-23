@@ -70,7 +70,7 @@ The app opens on **"Who are you?"**: Grower / FPO, Reefer / transporter, Buyer, 
 
 - **Frontend:** React 19, TanStack Start / Router / Query, Tailwind CSS 4, Recharts, Leaflet
 - **Login:** Clerk · **Database:** Neon serverless Postgres (SQL in [`neon/`](neon)) · **Email:** Resend · **Photos (optional):** Cloudflare R2
-- **AI:** TensorFlow.js + Teachable Machine in the browser (loaded only when scanning), Google Gemini for the assistants
+- **AI:** TensorFlow.js + gemini vision for scaning  (loaded only when scanning), Google Gemini for the assistants , claude for coding 
 - **Tooling:** Bun, Vite, TypeScript, Vitest, ESLint, Prettier, GitHub Actions CI
 
 ## Running it locally
