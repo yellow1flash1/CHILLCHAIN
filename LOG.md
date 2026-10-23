@@ -66,7 +66,7 @@ Redesigned the UI to look like an iPhone app (grouped lists, large titles, the b
 
 ## what's real and fake 
 
-Storage facilities on the map are sample data
+Storage facilities on the map are Real
 Sign-in, roles, profiles, settings	Real	Clerk login; data in Neon Postgres, every action checked on the server
 Sell-by clock, channels, price steps	Real logic	Calculated on the server and in Postgres from the scan; the browser cannot change them
 Hourly storage, shared truck fares, pre-orders Real logic	Postgres functions; pools match by route, day, vehicle and capacity
