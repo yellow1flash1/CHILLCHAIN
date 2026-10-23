@@ -16,9 +16,9 @@ In the first round of this hackathon we built **FreshGrid**: an app for staple-c
 
 ## Log
 
-**Oct 19:** Copied the FreshGrid code into a new project. Set up Neon Postgres, Clerk login and the base tables (`neon/schema.sql`). Kept the 4-role idea: grower, transporter, buyer, cold-room owner.
+**Oct 21:** Copied the FreshGrid code into a new project. Set up Neon Postgres, Clerk login and the base tables (`neon/schema.sql`). Kept the 4-role idea: grower, transporter, buyer, cold-room owner.
 
-**Oct 20:** Truck bookings and fare quotes (`002`). Cold-room owner side: register a room, check farmers in with a gate pass, release crates (`003a/b`). Wrote demo drivers for testing.
+**Oct 21:** Truck bookings and fare quotes (`002`). Cold-room owner side: register a room, check farmers in with a gate pass, release crates (`003a/b`). Wrote demo drivers for testing.
 
 **Oct 21:** Driver accounts: see nearby loads, accept trips, mark delivered and paid (`004`, `005`). Added "verify later" so drivers can look around before uploading RC, licence and insurance.
 ChillScore ratings (`006`). Ratings stay hidden for 48 hours, or until both sides rate, so nobody rates in revenge. New users start near an average score, so one bad rating doesn't sink them.
@@ -38,7 +38,7 @@ Grading: Gemini Vision for any crop, plus small on-phone models (Teachable Machi
 
 Redesigned the UI to look like an iPhone app (grouped lists, large titles, the bottom tab bar).
 
-**Oct 23:**
+**Oct 22:**
 
 - **15 languages.** Every string goes through `t("English", "हिन्दी")`. A script collects them all and each language has its own dictionary. Urdu needed right-to-left.
 - **Razorpay in test mode** (`011`). The server works out the amount, so the browser can't change what gets charged. Failed orders refund automatically.
@@ -53,12 +53,35 @@ Redesigned the UI to look like an iPhone app (grouped lists, large titles, the b
 - Money rules (price steps, escrow amounts) belong in the database, not just the app.
 - Government price data is messy; check units before trusting it.
 
-## AI use (being upfront)
-
+## AI we used
+- **claude.code**
+- **gemini.argon:** for research of data from google
 - **Inside the app:** Gemini Vision grades photos and runs the chat helper. TensorFlow.js runs the on-phone grading models.
 - **While building:** we used an AI coding assistant (Claude) a lot: for writing and fixing a good share of the code, the translations into the 13 extra languages, and first drafts of the slides.
 - **What was ours:** the idea and the pivot from FreshGrid, which features to build and in what order, the rules (shelf life, price steps, ratings), design choices, testing, and the deploy.
+- **cloudflare:** for deploy
+- **neon:** for sql and datamangement, the sql files
+- **resend:** for sending mails
+- **clerk**
 
-## What's still fake
+## what's real and fake 
 
-No real money moves (test payments only). Storage facilities on the map are sample data. WhatsApp/SMS alerts and reefer temperature logs aren't built yet. See the README for the full list.
+Storage facilities on the map are sample data
+Sign-in, roles, profiles, settings	Real	Clerk login; data in Neon Postgres, every action checked on the server
+Sell-by clock, channels, price steps	Real logic	Calculated on the server and in Postgres from the scan; the browser cannot change them
+Hourly storage, shared truck fares, pre-orders Real logic	Postgres functions; pools match by route, day, vehicle and capacity
+AI grading Real	On-phone models for apple and cherry tomato; Gemini Vision grades any crop from a photo on the server, asks for a retake when unsure, and the grower can override (shown to buyers)
+Ripeness stage AI estimate	From Gemini Vision or the grower's own pick
+Weather-adjusted clock Real	Open-Meteo forecast for the grower's district; open-air produce spoils ~2.5× faster per +10 °C
+"Best move now"	 Estimates	Real storage rates, pre-orders and fare formula; price assumptions are shown on screen
+Shelf-life hours, advisor costs, subsidies Indicative	From post-harvest handbooks and typical MIDH/NHB patterns; verify locally
+Live mandi prices Real (needs key)	Agmarknet daily reports from every government mandi, refreshed every 30 min into Postgres: state and all-India middle price, like-for-like change, 2-week trend and each market's price. Crops mandis don't report (blueberry, microgreens…) stay indicative
+Storage on the map Sample data	10 demo facilities in growing regions; real owners can register their own
+UPI / QR payments and escrow Simulated	No payment gateway yet; UTRs are random test numbers
+Offline mode Real	Installable app; opens without network on the last signed-in account with the last data seen (kept 7 days); scans made offline wait on the phone and upload when back online; on-phone grading models and map tiles are saved for the field. Bookings, orders and payments need internet
+Emails Real	Resend (optional)
+WhatsApp / SMS alerts, reefer temperature logs Not yet	Next steps
+
+## What's still under progress
+
+No real money moves (test payments only). . WhatsApp/SMS alerts and reefer temperature logs aren't built yet.
