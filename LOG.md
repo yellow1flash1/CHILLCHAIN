@@ -67,25 +67,39 @@ Redesigned the UI to look like an iPhone app (grouped lists, large titles, the b
 ## what's real and fake 
 
  Real
-Sign-in, roles, profiles, settings: Clerk handles login, data sits in Neon, and the server checks every action. Say: "Real login, real database."
-Sell-by clock, channels, price steps: the server and Postgres calculate the deadline, the A/B/C channel and the price drop. Say: "Real. The browser cannot change them."
-Hourly storage, shared trucks, pre-orders: Postgres functions book the cold room and pool trucks by route, day, vehicle and capacity. Say: "Real logic, running live."
-AI grading: apple and cherry tomato have models running on the phone. For any other crop, Gemini Vision grades the photo on the server, asks for a retake when unsure, and lets the grower override (buyers see the override). Say: "Real. Two crops run on-phone, all other crops use Gemini Vision."
-Weather-adjusted clock: it uses the Open-Meteo forecast for the grower's district, and open-air produce spoils about 2.5× faster for every +10 °C. Say: "Hot day, shorter clock, automatically."
-Live mandi prices: Agmarknet government prices refresh every 30 minutes into Postgres. Crops that mandis don't report (blueberry, microgreens) stay indicative. Say: "Real where the government reports, labelled indicative where it doesn't."
-Offline mode: the app is installable and opens without network with the last data seen (kept 7 days). Scans made offline upload later. Bookings, orders and payments still need internet. Say: "Scans work in a field with no signal."
+Sign-in, roles, profiles, settings: Clerk handles login, data sits in Neon, and the server checks every action."Real login, real database."
+
+Sell-by clock, channels, price steps: the server and Postgres calculate the deadline, the A/B/C channel and the price drop.  "Real. The browser cannot change them."
+
+Hourly storage, shared trucks, pre-orders: Postgres functions book the cold room and pool trucks by route, day, vehicle and capacity.  "Real logic, running live."
+
+AI grading: apple and cherry tomato have models running on the phone. For any other crop, Gemini Vision grades the photo on the server, asks for a retake when unsure, and lets the grower override (buyers see the override).  "Real. Two crops run on-phone, all other crops use Gemini Vision."
+
+Weather-adjusted clock: it uses the Open-Meteo forecast for the grower's district, and open-air produce spoils about 2.5× faster for every +10 °C. "Hot day, shorter clock, automatically."
+
+Live mandi prices: Agmarknet government prices refresh every 30 minutes into Postgres. Crops that mandis don't report (blueberry, microgreens) stay indicative. "Real where the government reports, labelled indicative where it doesn't."
+
+Offline mode: the app is installable and opens without network with the last data seen (kept 7 days). Scans made offline upload later. Bookings, orders and payments still need internet. "Scans work in a field with no signal."
+
 Emails: Resend sends them. It is optional.
- Estimate
-Ripeness stage: an AI estimate from Gemini Vision, or the grower picks it. Say: "An estimate, and the grower can correct it."
-"Best move now": it uses real storage rates, pre-orders and the fare formula, but the price assumptions are shown on screen. Say: "A suggestion, with its assumptions visible."
-Shelf-life hours, advisor costs, subsidies: these come from post-harvest handbooks and typical MIDH/NHB patterns. Say: "Starting values. We tune them in the pilot."
+Estimate
+Ripeness stage: an AI estimate from Gemini Vision, or the grower picks it. "An estimate, and the grower can correct it."
+
+"Best move now": it uses real storage rates, pre-orders and the fare formula, but the price assumptions are shown on screen."A suggestion, with its assumptions visible."
+
+Shelf-life hours, advisor costs, subsidies: these come from post-harvest handbooks and typical MIDH/NHB patterns. "Starting values. We tune them in the pilot."
+
 Fake/Sample
-Storage on the map: these are 10 demo facilities. Real owners can register their own, with their own UPI/QR payments. Say: "Demo data, labelled in the app."
-Payments: there is no payment gateway yet, and the UTRs (bank transaction reference numbers) are random test numbers. Say: "Simulated. A licensed partner comes next."
- Not yet
-WhatsApp/SMS alerts, reefer temperature logs: these are next steps. Say: "Planned for the pilot."
+Storage on the map: these are 10 demo facilities. Real owners can register their own, with their own UPI/QR payments.  "Demo data, labelled in the app."
 
+Payments: there is no payment gateway yet, and the UTRs (bank transaction reference numbers) are random test numbers.  "Simulated. A licensed partner comes next."
 
+Not yet
+WhatsApp/SMS alerts, reefer temperature logs: these are next steps. "Planned for the pilot."
+
+## API KEY USED
+gemini api key for chatbot
+INDIAN Government api key for live prices 
 
 ## What's still under progress
 
